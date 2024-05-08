@@ -1,9 +1,9 @@
-export default function StartGame() {
+export default function StartGame(props) {
     return (
         <div>
             <h1>Quizzical</h1>
             <p>Answer all the questions and have fun! To start press the button.</p>
-            <button>Start Quiz</button>
+            <button onClick={props.start}>Start Quiz</button>
         </div>
     )
 }
