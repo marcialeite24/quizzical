@@ -32,7 +32,7 @@ main {
   bottom: 0;
 }
 
-.start-game button {
+.start-game .start-btn {
   border: none;
   border-radius: 15px;
   background-color: #4D5B9E;
@@ -60,4 +60,29 @@ main {
   border-radius: 10px;
   background-color: transparent;
   color: #293264;
+  cursor: pointer
+}
+
+.dropdown-category-label,
+.difficulty-label { 
+  display: contents;
+  font-weight: bold;
+  color: #293264;
+}
+
+#dropdown-category {
+  font-size: 14px;
+  height: 30px;
+  width: auto;
+  padding: 5px 10px;
+  margin: 10px 10px;
+  border: 1px solid #4D5B9E;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #293264;
+  cursor: pointer
+}
+
+.difficulty-level label {
+  margin-right: 5px;
 }
