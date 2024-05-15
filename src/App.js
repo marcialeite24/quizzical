@@ -5,6 +5,7 @@ import React from 'react'
 
 export default function App() {
   const [startGame, setStartGame] = React.useState(false)
+  const [definitions, setDefinitions] = React.useState(false)
   const [formData, setFormData] = React.useState(
     {
       category: "",
@@ -15,8 +16,13 @@ export default function App() {
   function start() {
     if(startGame) {
       setStartGame(false)
+      setDefinitions(false)
     } else {
-      setStartGame(true)
+      if (formData.category === '' || formData.difficulty === '') {
+        setDefinitions(true)
+      } else {
+        setStartGame(true)
+      }
     }
   }
 
@@ -38,7 +44,7 @@ export default function App() {
   return (
     <main className='start-game'>
       <img src={require('./images/shape-top.png')} alt='shape-top' className='shape-top'/>
-      {!startGame && <StartGame start={start} formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>}
+      {!startGame && <StartGame start={start} definitions={definitions} formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>}
       {startGame && <Questions category={formData.category} difficulty={formData.difficulty}/>}
       <img src={require('./images/shape-bottom.png')} alt='shape-bottom' className='shape-bottom'/>
     </main>

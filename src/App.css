@@ -15,21 +15,33 @@ main {
   justify-content: center;
 }
 
-.start-game {
-  text-align: center;
-  color: #293264;
-}
-
 .shape-top {
   position: absolute;
   right: 0;
   top: 0;
+  z-index: -5;
 }
 
 .shape-bottom {
   position: absolute;
   left: 0;
   bottom: 0;
+  z-index: -5;
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 0;
+}
+
+.subtitle {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.start-game {
+  text-align: center;
+  color: #293264;
 }
 
 .start-game .start-btn {
@@ -43,6 +55,52 @@ main {
   cursor: pointer;
   padding: 5px;
   margin-top: 20px;
+}
+
+.quiz-definitions {
+  margin-top: 40px;
+}
+
+.quiz-definitions fieldset {
+  padding-bottom: 5px;
+}
+
+.quiz-definitions legend{
+  font-weight: bold;
+}
+
+.quiz-definitions .notSelected {
+  color: red;
+}
+
+.quiz-definitions .selected {
+  display: none;
+}
+
+.dropdown-category-label,
+.difficulty-label { 
+  display: contents;
+  font-weight: bold;
+  color: #293264;
+  font-size: 1rem;
+}
+
+#dropdown-category {
+  font-size: 0.85rem;
+  height: 30px;
+  width: auto;
+  padding: 5px 10px;
+  margin: 10px 10px;
+  border: 1px solid #4D5B9E;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #293264;
+  cursor: pointer
+}
+
+.difficulty-level label {
+  margin-right: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .questions p {
@@ -61,28 +119,4 @@ main {
   background-color: transparent;
   color: #293264;
   cursor: pointer
-}
-
-.dropdown-category-label,
-.difficulty-label { 
-  display: contents;
-  font-weight: bold;
-  color: #293264;
-}
-
-#dropdown-category {
-  font-size: 14px;
-  height: 30px;
-  width: auto;
-  padding: 5px 10px;
-  margin: 10px 10px;
-  border: 1px solid #4D5B9E;
-  border-radius: 10px;
-  background-color: transparent;
-  color: #293264;
-  cursor: pointer
-}
-
-.difficulty-level label {
-  margin-right: 5px;
 }
