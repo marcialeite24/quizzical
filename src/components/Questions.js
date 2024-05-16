@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function Questions(props) {
-    console.log(props)
     const [questions, setQuestions] = React.useState([])
              
     React.useEffect(() => {
@@ -10,7 +9,6 @@ export default function Questions(props) {
             return res.json();
         })
         .then((data) => {
-            console.log(data);
             const encodedQuestions = data.results.map((question) => ({
               ...question,
               question: decodeEntities(question.question),
@@ -18,7 +16,8 @@ export default function Questions(props) {
               incorrect_answers: question.incorrect_answers.map(decodeEntities),
             }));
             console.log(encodedQuestions)
-            setQuestions(encodedQuestions)
+            const shuffledQuestions = encodedQuestions.map(shuffleAnswers);
+            setQuestions(shuffledQuestions);            
         })
         .catch((error) => {
             console.error('Error fetching data:', error)
@@ -31,20 +30,31 @@ export default function Questions(props) {
         return textArea.value;
     }
 
+    const shuffleAnswers = (question) => {
+        const answers = [question.correct_answer, ...question.incorrect_answers];
+        for (let i = answers.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [answers[i], answers[j]] = [answers[j], answers[i]];
+        }
+        return { ...question, answers }
+    }
+
     return (
-        <div>      
+        <div className='questions-screen'>     
+            <h1>Quizzical</h1> 
+            <br></br>
             {questions.map((question, index) => (
                 <div key={index} className="questions">
                     <p>{question.question}</p>
                     <div className="options">
-                        <button>{question.correct_answer}</button>
-                        {question.incorrect_answers.map((answer, index) => (
+                        {question.answers.map((answer, index) => (
                             <button key={index}>{answer}</button>
                         ))}
                     </div>
                     <hr/>
                 </div>
             ))}
+            <button className='check-answers'>Check answers</button>
         </div>
     )
 }

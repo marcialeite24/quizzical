@@ -42,9 +42,11 @@ main {
 .start-game {
   text-align: center;
   color: #293264;
+  padding: 50px 70px;
 }
 
-.start-game .start-btn {
+.start-game .start-btn,
+.check-answers {
   border: none;
   border-radius: 15px;
   background-color: #4D5B9E;
@@ -103,6 +105,10 @@ main {
   font-size: 0.95rem;
 }
 
+.questions-screen {
+  width: 80%;
+}
+
 .questions p {
   font-weight: bold;
   text-align: left;
@@ -110,8 +116,8 @@ main {
 
 .options button {
   font-size: 14px;
-  height: 25px;
-  width: auto;
+  height: auto;
+  max-width: 25%;
   padding: 5px 15px;
   margin: 10px 15px;
   border: 1px solid #4D5B9E;
@@ -119,4 +125,5 @@ main {
   background-color: transparent;
   color: #293264;
   cursor: pointer
+  
 }
