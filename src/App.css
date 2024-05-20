@@ -125,5 +125,9 @@ main {
   background-color: transparent;
   color: #293264;
   cursor: pointer
-  
+}
+
+.options button.blue {
+  background-color: #D6DBF5;
+  border-color: #D6DBF5;
 }

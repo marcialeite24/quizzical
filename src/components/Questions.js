@@ -2,7 +2,8 @@ import React from 'react'
 
 export default function Questions(props) {
     const [questions, setQuestions] = React.useState([])
-             
+    const [selected, setSelected] = React.useState({})
+    
     React.useEffect(() => {
         fetch(`https://opentdb.com/api.php?amount=5&category=${props.category}&difficulty=${props.difficulty}&type=multiple`)
         .then((res) => {
@@ -39,16 +40,29 @@ export default function Questions(props) {
         return { ...question, answers }
     }
 
+    function handleClick(questionId, answerId) {
+        setSelected(prevSelected => ({
+            ...prevSelected,
+            [questionId]: answerId
+        }));
+    }
+
     return (
         <div className='questions-screen'>     
             <h1>Quizzical</h1> 
             <br></br>
-            {questions.map((question, index) => (
-                <div key={index} className="questions">
+            {questions.map((question, questionIndex) => (
+                <div key={questionIndex} className="questions">
                     <p>{question.question}</p>
                     <div className="options">
-                        {question.answers.map((answer, index) => (
-                            <button key={index}>{answer}</button>
+                        {question.answers.map((answer, answerIndex) => (                            
+                            <button 
+                                key={answerIndex} 
+                                className={selected[questionIndex] === answerIndex ? 'blue' : ''} 
+                                onClick={() => handleClick(questionIndex, answerIndex)}
+                            >
+                                {answer}
+                            </button>
                         ))}
                     </div>
                     <hr/>
