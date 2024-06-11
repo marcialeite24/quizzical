@@ -46,7 +46,7 @@ main {
 }
 
 .start-game .start-btn,
-.check-answers {
+.check-answers, .play-again button {
   border: none;
   border-radius: 15px;
   background-color: #4D5B9E;
@@ -57,6 +57,12 @@ main {
   cursor: pointer;
   padding: 5px;
   margin-top: 20px;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .quiz-definitions {
@@ -130,4 +136,30 @@ main {
 .options button.blue {
   background-color: #D6DBF5;
   border-color: #D6DBF5;
+}
+
+.options button.red {
+  background-color: #F8BCBC;
+  border-color: #F8BCBC;
+}
+
+.options button.green {
+  background-color: #94D7A2;
+  border-color: #94D7A2;
+}
+
+.play-again {
+  margin-top: 20px;
+}
+
+.play-again span {
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+.play-again button {
+  height: 40px;
+  width: auto;
+  padding: 0 20px;
+  margin-top: 0;
 }

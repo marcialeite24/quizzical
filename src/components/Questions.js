@@ -3,6 +3,9 @@ import React from 'react'
 export default function Questions(props) {
     const [questions, setQuestions] = React.useState([])
     const [selected, setSelected] = React.useState({})
+    const [checkCorrectAnswers, setCheckCorrectAnswers] = React.useState({})
+    const [score, setScore] = React.useState(null)
+    const [playAgain, setPlayAgain] = React.useState(false)
     
     React.useEffect(() => {
         fetch(`https://opentdb.com/api.php?amount=5&category=${props.category}&difficulty=${props.difficulty}&type=multiple`)
@@ -47,6 +50,40 @@ export default function Questions(props) {
         }));
     }
 
+    function handleAnswers() {
+        const results = {}
+        questions.forEach((question, questionIndex) => {
+            const selectedAnswer = question.answers[selected[questionIndex]]
+            results[questionIndex] = selectedAnswer === question.correct_answer
+        })
+        setCheckCorrectAnswers(results)
+        const correctCount = Object.values(results).filter(value => value === true).length;
+        setScore(correctCount);
+        setPlayAgain(true)
+    }
+
+    const getButtonClass = (questionIndex, answerIndex, answer) => {
+        if (checkCorrectAnswers[questionIndex] !== undefined) {
+            if (answer === questions[questionIndex].correct_answer) {
+                return 'green'
+            }
+            if (selected[questionIndex] === answerIndex) {
+                return checkCorrectAnswers[questionIndex] ? 'green' : 'red'
+            }
+        } else if (selected[questionIndex] === answerIndex) {
+            return 'blue'
+        }
+        return ''
+    }
+
+    // function endGame() {
+    //     if(playAgain) {
+    //         setPlayAgain(false)
+    //     } else {
+    //         setPlayAgain(true)
+    //     }
+    // }
+
     return (
         <div className='questions-screen'>     
             <h1>Quizzical</h1> 
@@ -58,8 +95,9 @@ export default function Questions(props) {
                         {question.answers.map((answer, answerIndex) => (                            
                             <button 
                                 key={answerIndex} 
-                                className={selected[questionIndex] === answerIndex ? 'blue' : ''} 
+                                className={getButtonClass(questionIndex, answerIndex, answer)}
                                 onClick={() => handleClick(questionIndex, answerIndex)}
+                                disabled={checkCorrectAnswers[questionIndex] !== undefined}
                             >
                                 {answer}
                             </button>
@@ -68,7 +106,20 @@ export default function Questions(props) {
                     <hr/>
                 </div>
             ))}
-            <button className='check-answers'>Check answers</button>
+            { !playAgain && <button 
+                className={`check-answers ${Object.keys(selected).length < 5 ? 'disabled' : ''}`} 
+                onClick={() => handleAnswers()}
+            >
+                Check answers
+            </button> }
+            { playAgain && <div className='play-again'>
+                <span>You scored {score}/5 correct answers</span>
+                <button                     
+                    // onClick={endGame()}
+                >
+                    Play again
+                </button>
+            </div>}
         </div>
     )
 }
