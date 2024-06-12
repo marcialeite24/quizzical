@@ -42,7 +42,6 @@ main {
 .start-game {
   text-align: center;
   color: #293264;
-  padding: 50px 70px;
 }
 
 .start-game .start-btn,
@@ -112,7 +111,8 @@ main {
 }
 
 .questions-screen {
-  width: 80%;
+  width: 70%;
+  margin: 5rem 10rem;
 }
 
 .questions p {
