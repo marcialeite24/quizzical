@@ -17,9 +17,9 @@ This is the final [Solo Project of React Course on Scrimba](https://scrimba.com/
 Create a Quiz using React.JS framework and its functionalities.
 
 ### Screenshot
-![Quizzical Start](./images/quizzical-start.png)
-![Quizzical Questions](./images/quizzical-questions.png)
-![Quizzical Score](./images/quizzical-score.png)
+![Quizzical Start](./src/images/quizzical-start.png)
+![Quizzical Questions](./src/images/quizzical-questions.png)
+![Quizzical Score](./src/images/quizzical-score.png)
 
 # Getting Started with Create React App
 
