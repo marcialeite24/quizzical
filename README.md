@@ -1,5 +1,5 @@
 # Quizzical
-Quizzical is an app that access trivia questions from the [Open Trivia Database API](https://opentdb.com/) and score players based on their answers. Multiple game options like difficulty and category are available for the player to change.
+Quizzical is an app that pulls trivia questions from the [Open Trivia Database API](https://opentdb.com/) and scores players based on their answers. Players can customize their game experience by selecting different difficulty levels and categories.
 
 This is the final [Solo Project of React Course on Scrimba](https://scrimba.com/learn/learnreact) developed from scratch by me and following the designed provided on this [Figma file](https://www.figma.com/file/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?node-id=0%3A1).
 
@@ -7,7 +7,7 @@ This is the final [Solo Project of React Course on Scrimba](https://scrimba.com/
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
+  - [Screenshots](#screenshots)
 - [Getting Started with Create React App](#getting-started-with-create-react-app)
     
 ## Overview
@@ -16,7 +16,7 @@ This is the final [Solo Project of React Course on Scrimba](https://scrimba.com/
 
 Create a Quiz using React.JS framework and its functionalities.
 
-### Screenshot
+### Screenshots
 ![Quizzical Start](./src/images/quizzical-start.png)
 ![Quizzical Questions](./src/images/quizzical-questions.png)
 ![Quizzical Score](./src/images/quizzical-score.png)
