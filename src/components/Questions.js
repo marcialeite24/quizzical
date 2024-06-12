@@ -10,7 +10,7 @@ export default function Questions(props) {
     React.useEffect(() => {
         fetch(`https://opentdb.com/api.php?amount=5&category=${props.category}&difficulty=${props.difficulty}&type=multiple`)
         .then((res) => {
-            return res.json();
+            return res.json()
         })
         .then((data) => {
             const encodedQuestions = data.results.map((question) => ({
@@ -18,10 +18,9 @@ export default function Questions(props) {
               question: decodeEntities(question.question),
               correct_answer: decodeEntities(question.correct_answer),
               incorrect_answers: question.incorrect_answers.map(decodeEntities),
-            }));
-            console.log(encodedQuestions)
-            const shuffledQuestions = encodedQuestions.map(shuffleAnswers);
-            setQuestions(shuffledQuestions);            
+            }))
+            const shuffledQuestions = encodedQuestions.map(shuffleAnswers)
+            setQuestions(shuffledQuestions)            
         })
         .catch((error) => {
             console.error('Error fetching data:', error)
@@ -76,14 +75,6 @@ export default function Questions(props) {
         return ''
     }
 
-    // function endGame() {
-    //     if(playAgain) {
-    //         setPlayAgain(false)
-    //     } else {
-    //         setPlayAgain(true)
-    //     }
-    // }
-
     return (
         <div className='questions-screen'>     
             <h1>Quizzical</h1> 
@@ -115,7 +106,7 @@ export default function Questions(props) {
             { playAgain && <div className='play-again'>
                 <span>You scored {score}/5 correct answers</span>
                 <button                     
-                    // onClick={endGame()}
+                    onClick={props.restart}
                 >
                     Play again
                 </button>

@@ -14,7 +14,7 @@ export default function StartGame(props) {
                     <br></br>
                     <label className={props.definitions ? 'notSelected' : 'selected'}>You need to select the category and the difficulty level!</label>
                 </fieldset>
-                <button className="start-btn" onClick={props.start}>Start Quiz</button>
+                <button type="button" className="start-btn" onClick={props.start}>Start Quiz</button>
             </form>            
         </div>
     )

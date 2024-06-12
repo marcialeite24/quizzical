@@ -41,11 +41,16 @@ export default function App() {
     console.log(formData)
   }
 
+  function restart() {
+    setStartGame(false)
+    setFormData({category: "", difficulty: ""})
+  }
+
   return (
     <main className='start-game'>
       <img src={require('./images/shape-top.png')} alt='shape-top' className='shape-top'/>
       {!startGame && <StartGame start={start} definitions={definitions} formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>}
-      {startGame && <Questions category={formData.category} difficulty={formData.difficulty}/>}
+      {startGame && <Questions restart={restart} category={formData.category} difficulty={formData.difficulty}/>}
       <img src={require('./images/shape-bottom.png')} alt='shape-bottom' className='shape-bottom'/>
     </main>
   )
