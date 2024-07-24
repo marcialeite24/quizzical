@@ -2,7 +2,7 @@ export default function Category(props) {
     return (
         <div>
             <label htmlFor="category" className="dropdown-category-label">Category: </label>
-            <select id="dropdown-category" name="category" value={props.data} onChange={props.handleChange}>
+            <select id="category" name="category" value={props.data} onChange={props.handleChange}>
                 <option value="">Select a category</option>
                 <option value="9">General Knowledge</option>
                 <option value="10">Entertainment: Books</option>
